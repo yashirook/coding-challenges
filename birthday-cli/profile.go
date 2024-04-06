@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"math"
+	"time"
+)
 
 type Profile struct {
 	Birthday time.Time
@@ -19,8 +22,11 @@ func NewProfile(birthday string) (p Profile, err error) {
 	return p, nil
 }
 
-// func (p Profile) Age() {
-// 	now := time.Now()
-// 	hourFromBirth := time.Duration()
+func (p Profile) Age() int {
+	hourFromBirth := time.Since(p.Birthday).Hours()
+	yearFromBirth := hourFromBirth / 24 / 365
+	age := math.Trunc(yearFromBirth)
 
-// }
+	return int(age)
+
+}

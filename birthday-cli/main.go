@@ -9,7 +9,7 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("Please type input text!")
+	fmt.Println("Please type your birthday by YYYY-MM-DD format!")
 	scanner.Scan()
 	text := scanner.Text()
 
@@ -18,5 +18,6 @@ func main() {
 		log.Fatal("Failed to parse date")
 	}
 
-	fmt.Printf("Birthday is %s\n", profile.Birthday.String())
+	age := profile.Age()
+	fmt.Printf("Your age is %d\n", age)
 }
